@@ -1,0 +1,20 @@
+version: "3"
+
+tasks:
+  build:
+    desc: "Build the application"
+    sources:
+      - src/**.rs
+      - Cargo.toml
+    generates:
+      - main
+    cmds:
+      - rustc -o main src/main.rs
+
+  run:
+    desc: "Run the application"
+    deps:
+      - build
+    silent: false
+    cmds:
+      - ./main
